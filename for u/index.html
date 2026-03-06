@@ -1,1 +1,732 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untukmu 🦋✨</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'butterfly-pink': '#FF69B4',
+            'butterfly-purple': '#9D4EDD',
+            'butterfly-blue': '#3A86FF',
+            'butterfly-cyan': '#00D4FF',
+            'butterfly-yellow': '#FFD60A',
+            'butterfly-orange': '#FF6B35',
+            'butterfly-lavender': '#E0AAFF',
+            'butterfly-cream': '#FFFACD',
+            'butterfly-mint': '#A8DADC',
+            'butterfly-coral': '#FF6B9D',
+            'butterfly-magenta': '#FF006E',
+          },
+          fontFamily: {
+            'serif': ['Playfair Display', 'Georgia', 'serif'],
+            'sans': ['Poppins', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    
+    .polaroid {
+      background: white;
+      padding: 12px 12px 40px 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transform: rotate(-2deg);
+      transition: transform 0.3s ease;
+    }
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+    .polaroid-right {
+      transform: rotate(2deg);
+    }
+    .polaroid-right:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+    
+    .timeline-dot::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: #FF69B4;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px #FF69B4;
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    .stagger-6 { animation-delay: 0.6s; }
+    
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+    
+    .heart-beat {
+      animation: heartBeat 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #FF69B4 0%, #9D4EDD 50%, #3A86FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .photo-frame {
+      border: 8px solid white;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    
+    .carousel-container {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+    .carousel-item {
+      scroll-snap-align: center;
+      flex-shrink: 0;
+    }
+    
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .overlay-gradient {
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.6) 100%);
+    }
+    
+    .paper-texture {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+    
+    .section-divider {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #FF69B4, transparent);
+    }
 
+    .butterfly-shimmer {
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .rainbow-border {
+      border-image: linear-gradient(45deg, #FF69B4, #9D4EDD, #3A86FF, #00D4FF, #FFD60A, #FF6B35) 1;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gradient-to-b from-butterfly-cream via-butterfly-lavender to-butterfly-mint font-sans text-gray-800 overflow-auto">
+  <div class="min-h-full w-full">
+   <!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-butterfly-pink/95 via-butterfly-purple/95 to-butterfly-blue/95 backdrop-blur-md border-b-4 border-butterfly-yellow shadow-2xl">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+     <span class="font-serif text-white text-2xl font-bold">✨ 🦋 ✨</span>
+     <div class="flex gap-6 text-sm font-bold">
+      <a href="#hero" class="text-white hover:text-butterfly-yellow transition-all duration-300 hover:scale-110">Beranda</a> <a href="#story" class="text-white hover:text-butterfly-yellow transition-all duration-300 hover:scale-110">Cerita</a> <a href="#moments" class="text-white hover:text-butterfly-yellow transition-all duration-300 hover:scale-110">Momen</a> <a href="#letter" class="text-white hover:text-butterfly-yellow transition-all duration-300 hover:scale-110">Surat</a>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <!-- Animated background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-butterfly-yellow via-butterfly-pink to-butterfly-purple"></div>
+    <div class="absolute inset-0 paper-texture"></div><!-- Floating butterflies and decorations -->
+    <div class="absolute top-20 left-10 text-7xl opacity-80 float-animation">
+     🦋
+    </div>
+    <div class="absolute bottom-32 right-16 text-6xl opacity-80 float-animation" style="animation-delay: -2s;">
+     🦋
+    </div>
+    <div class="absolute top-40 right-20 text-5xl opacity-70 float-animation" style="animation-delay: -4s;">
+     ✨
+    </div>
+    <div class="absolute bottom-20 left-1/4 text-6xl opacity-70 float-animation" style="animation-delay: -3s;">
+     🌈
+    </div>
+    <div class="absolute top-1/3 right-1/4 text-5xl opacity-60 float-animation" style="animation-delay: -5s;">
+     💫
+    </div><!-- Glow effect -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-30">
+     <div class="w-96 h-96 rounded-full bg-gradient-to-br from-butterfly-pink to-butterfly-blue blur-3xl"></div>
+    </div><!-- Hero content -->
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+     <div class="mb-8 fade-in">
+      <span class="text-8xl heart-beat inline-block">💕</span>
+     </div>
+     <h1 id="heroHeadline" class="font-serif text-5xl md:text-7xl lg:text-8xl text-white drop-shadow-2xl mb-6 fade-in stagger-1 leading-tight font-bold">Terima Kasih Telah Hadir<br>
+       dalam Hidupku</h1>
+     <p id="heroSubheadline" class="font-sans text-xl md:text-2xl text-white drop-shadow-lg mb-12 fade-in stagger-2 max-w-2xl mx-auto font-semibold">Untukmu — yang membuat hariku lebih hangat, lebih lucu, dan lebih berwarna ✨</p><a href="#story" class="inline-block bg-butterfly-coral hover:bg-butterfly-magenta text-white font-bold px-10 py-5 rounded-full transition-all duration-300 shadow-2xl hover:shadow-orange-500/50 hover:-translate-y-2 fade-in stagger-3 border-4 border-white text-lg"> Untukmu 🦋💕 </a> <!-- Scroll indicator -->
+     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 fade-in stagger-4">
+      <div class="w-6 h-10 border-3 border-white rounded-full flex justify-center pt-2">
+       <div class="w-2 h-3 bg-white rounded-full animate-bounce"></div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Our Story Section -->
+   <section id="story" class="py-24 bg-gradient-to-br from-butterfly-lavender/50 to-butterfly-mint/50 relative">
+    <div class="absolute inset-0 paper-texture"></div>
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-16">
+      <span class="text-butterfly-purple text-sm font-bold tracking-widest uppercase">🦋 Perjalanan Kita 🦋</span>
+      <h2 class="font-serif text-5xl md:text-6xl bg-gradient-to-r from-butterfly-pink via-butterfly-purple to-butterfly-blue bg-clip-text text-transparent mt-3 font-bold">Cerita Kita</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-butterfly-pink via-butterfly-purple to-butterfly-blue mx-auto mt-6"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+      <!-- First Chat Photo -->
+      <div class="order-2 md:order-1">
+       <div class="polaroid mx-auto max-w-sm bg-white shadow-2xl">
+        <img src="FOTO 1.jpeg" alt="Screenshot Chat Pertama" class="w-full aspect-[4/5] object-cover rounded" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FF69B4, #9D4EDD)'; this.alt='Image unavailable';">
+        <p class="font-serif text-gray-700 text-center mt-4 text-sm font-semibold">Chat pertama kita — masih ingat siapa yang typo duluan? 😂</p>
+       </div>
+      </div>
+      <div class="order-1 md:order-2">
+       <p id="storyText" class="font-sans text-gray-700 text-lg leading-relaxed font-semibold">Siapa sangka satu pesan singkat akan membawa kita ke rangkaian tawa, kejutan, dan kenyamanan ini. Dari "halo" pertama hingga malam-malam panjang — kamu selalu ada di sana.</p>
+       <p class="font-sans text-gray-700 text-lg leading-relaxed mt-4 font-semibold">Setiap hari bersamamu terasa seperti halaman baru yang ingin kubaca. Tidak pernah membosankan, selalu penuh warna. ✨</p>
+      </div>
+     </div><!-- Timeline -->
+     <div class="max-w-3xl mx-auto">
+      <h3 class="font-serif text-3xl bg-gradient-to-r from-butterfly-pink to-butterfly-purple bg-clip-text text-transparent text-center mb-12 font-bold">Timeline Perjalanan Kita</h3>
+      <div class="relative border-l-4 border-butterfly-pink ml-6 md:ml-0 md:mx-auto md:max-w-xl pl-8 space-y-12">
+       <!-- Timeline Item 1 -->
+       <div class="relative timeline-dot">
+        <span class="text-butterfly-blue font-bold text-sm">Pertemuan Pertama</span>
+        <h4 class="font-serif text-xl bg-gradient-to-r from-butterfly-pink to-butterfly-purple bg-clip-text text-transparent mt-1 font-bold">Chat Pertama Kita</h4>
+        <p class="text-gray-700 mt-2 font-semibold">Semuanya bermula dari satu pesan sederhana. Siapa tahu ternyata jodoh? 💫</p>
+       </div><!-- Timeline Item 2 -->
+       <div class="relative timeline-dot">
+        <span class="text-butterfly-blue font-bold text-sm">Momen Lucu</span>
+        <h4 class="font-serif text-xl bg-gradient-to-r from-butterfly-pink to-butterfly-purple bg-clip-text text-transparent mt-1 font-bold">Tawa Bersama</h4>
+        <p class="text-gray-700 mt-2 font-semibold">Dari salah kirim stiker sampai cerita random jam 2 pagi. Semuanya jadi kenangan manis 😆</p>
+       </div><!-- Timeline Item 3 -->
+       <div class="relative timeline-dot">
+        <span class="text-butterfly-blue font-bold text-sm">Hal yang Membuatku Jatuh Cinta</span>
+        <h4 class="font-serif text-xl bg-gradient-to-r from-butterfly-pink to-butterfly-purple bg-clip-text text-transparent mt-1 font-bold">Ketulusan Hatimu</h4>
+        <p class="text-gray-700 mt-2 font-semibold">Bukan hal besar, tapi cara kamu peduli dengan hal-hal kecil yang membuatku yakin — kamu orangnya. 💕</p>
+       </div>
+      </div>
+     </div><!-- Childhood Photo -->
+     <div class="mt-20 text-center">
+      <div class="polaroid-right inline-block mx-auto max-w-xs bg-white shadow-2xl">
+       <div class="aspect-square bg-gradient-to-br from-butterfly-yellow to-butterfly-orange rounded flex items-center justify-center">
+        <div class="text-center p-6">
+         <span class="text-6xl mb-4 block">👶</span>
+         <p class="font-serif text-butterfly-purple font-bold">Foto Masa Kecil</p>
+         <p class="text-sm text-gray-500 mt-2">Ganti dengan foto childhood</p>
+        </div>
+       </div>
+       <p class="font-serif text-gray-700 text-center mt-4 text-sm font-semibold">Flashback kecil — dari dulu sudah manis ya? 🥰</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Moments Gallery Section -->
+   <section id="moments" class="py-24 bg-white relative">
+    <div class="absolute inset-0 paper-texture"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-16">
+      <span class="text-butterfly-pink text-sm font-bold tracking-widest uppercase">🎨 Galeri Kenangan 🎨</span>
+      <h2 class="font-serif text-5xl md:text-6xl bg-gradient-to-r from-butterfly-pink via-butterfly-blue to-butterfly-purple bg-clip-text text-transparent mt-3 font-bold">Momen Berharga</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-butterfly-pink via-butterfly-blue to-butterfly-purple mx-auto mt-6"></div>
+     </div><!-- Main Carousel -->
+     <div class="carousel-container flex gap-6 pb-8 px-4 -mx-4">
+      <!-- Carousel Item 1 -->
+      <div class="carousel-item w-80 md:w-96">
+       <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4]">
+        <img src="FOTO 2.jpeg" alt="Foto Utama #1" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FF69B4, #9D4EDD)'; this.alt='Image unavailable';">
+        <div class="absolute bottom-0 left-0 right-0 p-6 overlay-gradient">
+         <p class="font-serif text-white text-lg font-bold">Momen yang tak terlupakan ✨</p>
+        </div>
+       </div>
+      </div><!-- Carousel Item 2 -->
+      <div class="carousel-item w-80 md:w-96">
+       <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4]">
+        <img src="FOTO 3.jpeg" alt="Screenshot VC" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #3A86FF, #00D4FF)'; this.alt='Image unavailable';">
+        <div class="absolute bottom-0 left-0 right-0 p-6 overlay-gradient">
+         <p class="font-serif text-white text-lg font-bold">Ketawa bareng lewat layar — suaranya bikin kangen 💕</p>
+        </div>
+       </div>
+      </div><!-- Carousel Item 3 -->
+      <div class="carousel-item w-80 md:w-96">
+       <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4]">
+        <img src="FOTO 4.jpeg" alt="Foto Utama #2" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #9D4EDD, #E0AAFF)'; this.alt='Image unavailable';">
+        <div class="absolute bottom-0 left-0 right-0 p-6 overlay-gradient">
+         <p class="font-serif text-white text-lg font-bold">Setiap foto bersamamu adalah favorit 🌸</p>
+        </div>
+       </div>
+      </div><!-- Carousel Item 4 -->
+      <div class="carousel-item w-80 md:w-96">
+       <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4]">
+        <img src="FOTO 5.jpeg" alt="Foto Buket" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FFD60A, #FF6B35)'; this.alt='Image unavailable';">
+        <div class="absolute bottom-0 left-0 right-0 p-6 overlay-gradient">
+         <p class="font-serif text-white text-lg font-bold">Buket favoritku — cara kamu membuat hariku 🌷</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <p class="text-center text-gray-500 text-sm mt-4 font-semibold">← Geser untuk melihat lebih banyak →</p><!-- Masonry Grid -->
+     <div class="mt-20">
+      <h3 class="font-serif text-3xl bg-gradient-to-r from-butterfly-pink to-butterfly-purple bg-clip-text text-transparent text-center mb-10 font-bold">Lebih Banyak Kenangan</h3>
+      <div class="masonry-grid">
+       <!-- Grid Item 1 -->
+       <div class="photo-frame rounded-xl overflow-hidden hover:shadow-2xl transition-shadow">
+        <img src="FOTO 6.jpeg" alt="Foto Galeri 1" class="w-full aspect-square object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FF69B4, #FF6B9D)'; this.alt='Image unavailable';">
+       </div><!-- Grid Item 2 -->
+       <div class="photo-frame rounded-xl overflow-hidden hover:shadow-2xl transition-shadow">
+        <img src="FOTO 7.jpeg" alt="Foto Galeri 2" class="w-full aspect-[4/5] object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #3A86FF, #00D4FF)'; this.alt='Image unavailable';">
+       </div><!-- Grid Item 3 -->
+       <div class="photo-frame rounded-xl overflow-hidden hover:shadow-2xl transition-shadow">
+        <img src="FOTO 8.jpeg" alt="Foto Galeri 3" class="w-full aspect-square object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #9D4EDD, #E0AAFF)'; this.alt='Image unavailable';">
+       </div><!-- Grid Item 4 -->
+       <div class="photo-frame rounded-xl overflow-hidden hover:shadow-2xl transition-shadow">
+        <img src="FOTO 9.jpeg" alt="Foto Galeri 4" class="w-full aspect-[5/4] object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FFD60A, #FF6B35)'; this.alt='Image unavailable';">
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Funny Moments Section -->
+   <section id="funny" class="py-24 bg-gradient-to-br from-butterfly-yellow/30 to-butterfly-pink/30 relative">
+    <div class="absolute inset-0 paper-texture"></div>
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-16">
+      <span class="text-butterfly-magenta text-sm font-bold tracking-widest uppercase">😆 Tawa Kita 😆</span>
+      <h2 class="font-serif text-5xl md:text-6xl bg-gradient-to-r from-butterfly-orange to-butterfly-pink bg-clip-text text-transparent mt-3 font-bold">Momen Lucu</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-butterfly-orange to-butterfly-pink mx-auto mt-6"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8">
+      <!-- Funny Moment 1 -->
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all border-4 border-butterfly-pink">
+       <div class="flex items-start gap-4">
+        <span class="text-4xl">😂</span>
+        <div>
+         <h4 class="font-serif text-butterfly-magenta text-lg mb-2 font-bold">Salah Kirim Stiker</h4>
+         <p class="text-gray-700 font-semibold">"Waktu kamu salah kirim stiker dan aku pikir itu kode rahasia..."</p>
+        </div>
+       </div>
+      </div><!-- Funny Moment 2 -->
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all border-4 border-butterfly-blue">
+       <div class="flex items-start gap-4">
+        <span class="text-4xl">🤦‍♀️</span>
+        <div>
+         <h4 class="font-serif text-butterfly-blue text-lg mb-2 font-bold">Typo Legendaris</h4>
+         <p class="text-gray-700 font-semibold">"Yang penting maksudnya sampai, kan? ...kan?" 😅</p>
+        </div>
+       </div>
+      </div><!-- Funny Moment 3 -->
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all border-4 border-butterfly-purple">
+       <div class="flex items-start gap-4">
+        <span class="text-4xl">😴</span>
+        <div>
+         <h4 class="font-serif text-butterfly-purple text-lg mb-2 font-bold">Ketiduran Sambil Chat</h4>
+         <p class="text-gray-700 font-semibold">"Reply terakhir: 'iya' — 3 jam kemudian: 'eh sorry ketiduran'"</p>
+        </div>
+       </div>
+      </div><!-- Funny Moment 4 -->
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all border-4 border-butterfly-orange">
+       <div class="flex items-start gap-4">
+        <span class="text-4xl">🎤</span>
+        <div>
+         <h4 class="font-serif text-butterfly-orange text-lg mb-2 font-bold">Voice Note Random</h4>
+         <p class="text-gray-700 font-semibold">"VN 5 menit tapi isinya cuma cerita drama tetangga" 🎭</p>
+        </div>
+       </div>
+      </div><!-- Funny Moment 5 -->
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all border-4 border-butterfly-cyan">
+       <div class="flex items-start gap-4">
+        <span class="text-4xl">📱</span>
+        <div>
+         <h4 class="font-serif text-butterfly-cyan text-lg mb-2 font-bold">Screenshot Lucu</h4>
+         <p class="text-gray-700 font-semibold">"Koleksi screenshot chat kita bisa jadi buku komedi"</p>
+        </div>
+       </div>
+      </div><!-- Funny Moment 6 -->
+      <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all border-4 border-butterfly-lavender">
+       <div class="flex items-start gap-4">
+        <span class="text-4xl">🍕</span>
+        <div>
+         <h4 class="font-serif text-butterfly-purple text-lg mb-2 font-bold">Debat Makanan</h4>
+         <p class="text-gray-700 font-semibold">"Diskusi serius jam 1 pagi tentang pizza terbaik" 🤔</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Love Letter Section -->
+   <section id="letter" class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 paper-texture"></div>
+    <div class="absolute top-10 left-10 text-8xl opacity-15">
+     💌
+    </div>
+    <div class="absolute bottom-10 right-10 text-8xl opacity-15">
+     💕
+    </div>
+    <div class="max-w-3xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-12">
+      <span class="text-butterfly-pink text-sm font-bold tracking-widest uppercase">💝 Dari Hatiku 💝</span>
+      <h2 class="font-serif text-5xl md:text-6xl bg-gradient-to-r from-butterfly-pink via-butterfly-purple to-butterfly-blue bg-clip-text text-transparent mt-3 font-bold">Surat Cinta</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-butterfly-pink via-butterfly-purple to-butterfly-blue mx-auto mt-6"></div>
+     </div>
+     <div class="bg-gradient-to-br from-butterfly-cream to-butterfly-lavender rounded-3xl p-8 md:p-12 shadow-2xl border-4 border-butterfly-pink">
+      <div class="text-center mb-8">
+       <span class="text-5xl">💝</span>
+      </div>
+      <p class="font-serif text-gray-800 text-lg md:text-xl leading-relaxed mb-6 italic font-semibold">Sayangku,</p>
+      <p id="loveLetter" class="font-serif text-gray-800 text-lg md:text-xl leading-relaxed mb-6 font-semibold">Kamu adalah alasan banyak hal kecil jadi besar: senyum di pagi hari, alasan secangkir kopi tidak terasa pahit, dan alasan aku percaya pada keberuntungan. Terima kasih sudah memilih untuk dekat. Aku menyayangimu — bukan karena kamu sempurna, tapi karena kamu membuatku ingin jadi lebih baik.</p>
+      <p class="font-serif text-gray-800 text-lg md:text-xl leading-relaxed mb-6 font-semibold">Setiap hari bersamamu adalah hadiah. Setiap tawa adalah musik. Dan setiap "selamat malam" darimu adalah doa terbaik sebelum tidur.</p>
+      <p class="font-serif text-gray-800 text-lg md:text-xl leading-relaxed font-semibold">Terima kasih sudah menjadi kamu. Terima kasih sudah hadir. 💕</p>
+      <div class="text-right mt-8">
+       <p class="font-serif text-butterfly-magenta text-xl italic font-bold">Dengan cinta,</p>
+       <p class="font-serif text-butterfly-magenta text-2xl mt-2 font-bold">— Aku yang mencintaimu ♡</p>
+      </div>
+     </div>
+     <div class="text-center mt-10">
+      <a href="#moments" class="inline-flex items-center gap-2 bg-gradient-to-r from-butterfly-pink to-butterfly-purple text-white font-bold px-6 py-3 rounded-full hover:shadow-lg transition-all hover:-translate-y-1"> <span>Lihat Lebih Banyak Cerita</span>
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+       </svg></a>
+     </div>
+    </div>
+   </section><!-- Bouquet Section -->
+   <section id="bouquet" class="py-24 bg-gradient-to-br from-butterfly-pink/20 to-butterfly-orange/20 relative">
+    <div class="absolute inset-0 paper-texture"></div>
+    <div class="max-w-5xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-16">
+      <span class="text-butterfly-orange text-sm font-bold tracking-widest uppercase">💐 Bunga Untukmu 💐</span>
+      <h2 class="font-serif text-5xl md:text-6xl bg-gradient-to-r from-butterfly-pink to-butterfly-orange bg-clip-text text-transparent mt-3 font-bold">Buket Favorit</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-butterfly-pink to-butterfly-orange mx-auto mt-6"></div>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Main Bouquet Photo -->
+      <div class="relative">
+       <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+        <img src="FOTO 10.jpeg" alt="Foto Buket" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FF69B4, #FF006E)'; this.alt='Image unavailable';">
+       </div><!-- Decorative elements -->
+       <div class="absolute -top-4 -right-4 w-24 h-24 bg-butterfly-yellow rounded-full blur-2xl opacity-70"></div>
+       <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-butterfly-orange rounded-full blur-2xl opacity-70"></div>
+      </div>
+      <div>
+       <h3 class="font-serif text-3xl bg-gradient-to-r from-butterfly-pink to-butterfly-magenta bg-clip-text text-transparent mb-6 font-bold">Kenapa Ini Favorit?</h3>
+       <p class="text-gray-700 text-lg leading-relaxed mb-6 font-semibold">Buket ini istimewa bukan karena harganya, bukan karena ukurannya — tapi karena momen saat kamu memberikannya. Setiap kelopak seperti menyimpan cerita kita. 🌷</p>
+       <p class="text-gray-700 text-lg leading-relaxed mb-8 font-semibold">Warna-warnanya mengingatkanku pada senyummu — hangat, cerah, dan selalu membuat hari lebih indah.</p><!-- Small bouquet details grid -->
+       <div class="grid grid-cols-3 gap-3">
+        <div class="aspect-square rounded-xl bg-gradient-to-br from-butterfly-pink to-butterfly-coral flex items-center justify-center shadow-lg">
+         <span class="text-3xl">🌸</span>
+        </div>
+        <div class="aspect-square rounded-xl bg-gradient-to-br from-butterfly-yellow to-butterfly-orange flex items-center justify-center shadow-lg">
+         <span class="text-3xl">🌺</span>
+        </div>
+        <div class="aspect-square rounded-xl bg-gradient-to-br from-butterfly-purple to-butterfly-lavender flex items-center justify-center shadow-lg">
+         <span class="text-3xl">🌷</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Uniform Section -->
+   <section id="uniform" class="py-24 bg-white relative">
+    <div class="absolute inset-0 paper-texture"></div>
+    <div class="max-w-5xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-16">
+      <span class="text-butterfly-blue text-sm font-bold tracking-widest uppercase">👔 Tampil Keren 👔</span>
+      <h2 class="font-serif text-5xl md:text-6xl bg-gradient-to-r from-butterfly-blue via-butterfly-purple to-butterfly-pink bg-clip-text text-transparent mt-3 font-bold">Galeri Seragam</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-butterfly-blue via-butterfly-purple to-butterfly-pink mx-auto mt-6"></div>
+      <p class="text-gray-700 mt-6 max-w-xl mx-auto font-semibold">Keren &amp; berwibawa — tapi tetap bikin hatiku meleleh 💕</p>
+     </div><!-- 2x3 Grid -->
+     <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Uniform Photo 1 -->
+      <div class="group">
+       <div class="photo-frame rounded-xl overflow-hidden hover:shadow-2xl transition-shadow">
+        <div class="aspect-[3/4] relative group-hover:scale-105 transition-transform">
+         <img src="FOTO 11.jpeg" alt="Foto Seragam 1" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FF69B4, #FF006E)'; this.alt='Image unavailable';">
+         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white font-serif text-sm font-bold">Keren banget di sini! ✨</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Uniform Photo 2 -->
+      <div class="group">
+       <div class="photo-frame rounded-xl overflow-hidden hover:shadow-2xl transition-shadow">
+        <div class="aspect-[3/4] relative group-hover:scale-105 transition-transform">
+         <img src="FOTO 12.jpeg" alt="Foto Seragam 2" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #3A86FF, #00D4FF)'; this.alt='Image unavailable';">
+         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white font-serif text-sm font-bold">Matanya tetap lembut 💕</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Uniform Photo 3 -->
+      <div class="group">
+       <div class="photo-frame rounded-xl overflow-hidden hover:shadow-2xl transition-shadow">
+        <div class="aspect-[3/4] relative group-hover:scale-105 transition-transform">
+         <img src="FOTO 13.jpeg" alt="Foto Seragam 3" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #9D4EDD, #E0AAFF)'; this.alt='Image unavailable';">
+         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white font-serif text-sm font-bold">Senyumnya bikin hari cerah ☀️</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Uniform Photo 4 -->
+      <div class="group">
+       <div class="photo-frame rounded-xl overflow-hidden hover:shadow-2xl transition-shadow">
+        <div class="aspect-[3/4] relative group-hover:scale-105 transition-transform">
+         <img src="FOTO 14.jpeg" alt="Foto Seragam 4" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FFD60A, #FF6B35)'; this.alt='Image unavailable';">
+         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white font-serif text-sm font-bold">Profesional &amp; manis 🌸</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Uniform Photo 5 -->
+      <div class="group">
+       <div class="photo-frame rounded-xl overflow-hidden hover:shadow-2xl transition-shadow">
+        <div class="aspect-[3/4] relative group-hover:scale-105 transition-transform">
+         <img src="FOTO 15.jpeg" alt="Foto Seragam 5" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FF6B9D, #FF69B4)'; this.alt='Image unavailable';">
+         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <p class="text-white font-serif text-sm font-bold">Favorit! 💯</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Placeholder -->
+      <div class="group">
+       <div class="photo-frame rounded-xl overflow-hidden">
+        <div class="aspect-[3/4] bg-gradient-to-br from-butterfly-lavender to-butterfly-mint flex items-center justify-center relative border-4 border-dashed border-butterfly-purple">
+         <div class="text-center text-butterfly-purple">
+          <span class="text-5xl">➕</span>
+          <p class="text-sm mt-2 font-bold">Foto Tambahan</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Childhood Section -->
+   <section id="childhood" class="py-24 bg-gradient-to-br from-butterfly-yellow/40 to-butterfly-orange/40 relative">
+    <div class="absolute inset-0 paper-texture"></div>
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-16">
+      <span class="text-butterfly-orange text-sm font-bold tracking-widest uppercase">👶 Nostalgia 👶</span>
+      <h2 class="font-serif text-5xl md:text-6xl bg-gradient-to-r from-butterfly-yellow to-butterfly-orange bg-clip-text text-transparent mt-3 font-bold">Masa Kecil</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-butterfly-yellow to-butterfly-orange mx-auto mt-6"></div>
+     </div>
+     <div class="flex flex-col items-center">
+      <!-- Main Childhood Photo -->
+      <div class="polaroid max-w-md mx-auto bg-white mb-12 shadow-2xl">
+       <div class="aspect-square rounded overflow-hidden">
+        <img src="FOTO 16.jpeg" alt="Foto Masa Kecil" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FFD60A, #FF6B35)'; this.alt='Image unavailable';">
+       </div>
+       <p class="font-serif text-gray-800 text-center mt-6 text-lg font-bold">Dari kecil sampai sekarang — tetap mempesona 🥰</p>
+      </div><!-- Timeline from childhood to now -->
+      <div class="flex items-center gap-4 flex-wrap justify-center">
+       <div class="bg-gradient-to-r from-butterfly-yellow to-butterfly-cream rounded-full px-6 py-3 shadow-md border-2 border-butterfly-orange">
+        <span class="font-serif text-butterfly-orange font-bold">Masa Kecil 👶</span>
+       </div>
+       <div class="text-butterfly-pink text-3xl">
+        →
+       </div>
+       <div class="bg-gradient-to-r from-butterfly-pink to-butterfly-coral rounded-full px-6 py-3 shadow-md border-2 border-butterfly-magenta">
+        <span class="font-serif text-white font-bold">Remaja 🌸</span>
+       </div>
+       <div class="text-butterfly-purple text-3xl">
+        →
+       </div>
+       <div class="bg-gradient-to-r from-butterfly-purple to-butterfly-blue rounded-full px-6 py-3 shadow-md border-2 border-butterfly-blue">
+        <span class="font-serif text-white font-bold">Sekarang 💕</span>
+       </div>
+      </div>
+      <p class="text-center text-gray-700 mt-8 max-w-lg font-semibold">Perjalanan waktu yang luar biasa. Dari foto kecil ini sampai hari ini — kamu selalu istimewa.</p>
+     </div>
+    </div>
+   </section><!-- Closing Section -->
+   <section id="closing" class="py-24 bg-gradient-to-br from-butterfly-pink via-butterfly-purple to-butterfly-blue relative overflow-hidden shadow-2xl">
+    <div class="absolute inset-0 paper-texture opacity-50"></div>
+    <div class="absolute top-10 left-10 text-8xl opacity-30 text-white float-animation">
+     💕
+    </div>
+    <div class="absolute bottom-10 right-10 text-8xl opacity-30 text-white float-animation" style="animation-delay: -3s;">
+     ✨
+    </div>
+    <div class="max-w-3xl mx-auto px-6 relative z-10 text-center">
+     <div class="mb-8">
+      <span class="text-8xl heart-beat inline-block">💝</span>
+     </div>
+     <h2 class="font-serif text-5xl md:text-6xl text-white mb-6 font-bold drop-shadow-lg">Terima Kasih</h2>
+     <p class="text-white/95 text-lg md:text-xl mb-10 max-w-xl mx-auto font-semibold">Untuk setiap tawa, setiap cerita, dan setiap momen. Kamu adalah berkah terindah dalam hidupku.</p><!-- Personal Message Box -->
+     <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-8 mb-10 border-4 border-white/40 shadow-2xl">
+      <label class="block text-white/90 text-sm mb-3 font-bold">Pesan Pribadi:</label> <textarea id="personalMessage" class="w-full bg-white/30 border-2 border-white/50 rounded-xl p-4 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white focus:border-white resize-none h-32 font-semibold" placeholder="Tulis pesan pribadimu di sini sebelum mengirim..."></textarea>
+     </div>
+     <div class="space-y-4">
+      <p class="font-serif text-white text-3xl italic font-bold drop-shadow-lg">Untukmu, selalu ♡</p>
+      <p class="text-white/80 text-sm font-bold">Dengan segala cinta — dari aku yang mencintaimu</p>
+     </div>
+     <div class="mt-12">
+      <a href="#hero" class="inline-flex items-center gap-2 bg-white text-butterfly-purple font-bold px-8 py-4 rounded-full hover:bg-butterfly-yellow transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 border-4 border-white"> <span>Kembali ke Atas</span>
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+       </svg></a>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="bg-gradient-to-r from-butterfly-pink/90 via-butterfly-purple/90 to-butterfly-blue/90 py-8 text-center border-t-4 border-butterfly-yellow shadow-lg">
+    <p class="text-white text-sm font-bold">Dibuat dengan 💕 untukmu</p>
+    <p class="text-butterfly-yellow font-serif text-lg mt-2 font-bold">✨ 🦋 ♡ 🦋 ✨</p>
+   </footer>
+  </div>
+  <script>
+    // Photo mapping - Update these with your local file paths
+    const photos = {
+      chat_pertama: 'https://imgur.com/TTSlhff.jpg',
+      carousel_1: 'FOTO 1.jpeg',
+      carousel_2: 'FOTO 2.jpeg',
+      carousel_3: 'FOTO 3.jpeg',
+      carousel_4: 'FOTO 4.jpeg',
+      galeri_1: 'FOTO 5.jpeg',
+      galeri_2: 'FOTO 6.jpeg',
+      galeri_3: 'FOTO 7.jpeg',
+      galeri_4: 'FOTO 8.jpeg',
+      buket: 'FOTO 9.jpeg',
+      seragam_1: 'FOTO 10.jpeg',
+      seragam_2: 'FOTO 11.jpeg',
+      seragam_3: 'FOTO 12.jpeg',
+      seragam_4: 'FOTO 13.jpeg',
+      seragam_5: 'FOTO 14.jpeg',
+      childhood: 'FOTO 15.jpeg'
+    };
+
+    // Default configuration
+    const defaultConfig = {
+      hero_headline: 'Terima Kasih Telah Hadir dalam Hidupku',
+      hero_subheadline: 'Untukmu — yang membuat hariku lebih hangat, lebih lucu, dan lebih berwarna ✨',
+      story_text: 'Siapa sangka satu pesan singkat akan membawa kita ke rangkaian tawa, kejutan, dan kenyamanan ini. Dari "halo" pertama hingga malam-malam panjang — kamu selalu ada di sana.',
+      love_letter: 'Kamu adalah alasan banyak hal kecil jadi besar: senyum di pagi hari, alasan secangkir kopi tidak terasa pahit, dan alasan aku percaya pada keberuntungan. Terima kasih sudah memilih untuk dekat. Aku menyayangimu — bukan karena kamu sempurna, tapi karena kamu membuatku ingin jadi lebih baik.',
+      closing_message: '',
+    };
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update hero headline
+          const heroHeadline = document.getElementById('heroHeadline');
+          if (heroHeadline) {
+            heroHeadline.textContent = config.hero_headline || defaultConfig.hero_headline;
+          }
+          
+          // Update hero subheadline
+          const heroSubheadline = document.getElementById('heroSubheadline');
+          if (heroSubheadline) {
+            heroSubheadline.textContent = config.hero_subheadline || defaultConfig.hero_subheadline;
+          }
+          
+          // Update story text
+          const storyText = document.getElementById('storyText');
+          if (storyText) {
+            storyText.textContent = config.story_text || defaultConfig.story_text;
+          }
+          
+          // Update love letter
+          const loveLetter = document.getElementById('loveLetter');
+          if (loveLetter) {
+            loveLetter.textContent = config.love_letter || defaultConfig.love_letter;
+          }
+          
+          // Update personal message
+          const personalMessage = document.getElementById('personalMessage');
+          if (personalMessage && config.closing_message) {
+            personalMessage.value = config.closing_message;
+          }
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
+          ['hero_subheadline', config.hero_subheadline || defaultConfig.hero_subheadline],
+          ['story_text', config.story_text || defaultConfig.story_text],
+          ['love_letter', config.love_letter || defaultConfig.love_letter],
+          ['closing_message', config.closing_message || defaultConfig.closing_message]
+        ])
+      });
+    }
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections for animation
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d7fb0fd0451145b',t:'MTc3Mjc4MjYwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
